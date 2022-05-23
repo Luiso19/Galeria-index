@@ -1,0 +1,63 @@
+<html><head> 
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+ </head> 
+ <body> 
+  <div id="app1"> 
+   <img v-bind:src="fuenteDeImagen" v-on:click.prevent="cambiaImagen"> 
+   <br> <button v-on:click.prevent="meGusta"> Me gusta </button>
+   <h3> #Likes: {{numLikes}}</h3>
+      <code> {{indice}}-{{fuenteDeImagen}}
+      <br>
+          {{likes}}
+      </code>
+  </div> 
+<script>
+var app=new Vue ({
+    el:"#app1",
+    data: {
+        mensaje: "Hola, hoy termina el mes del amor y la amistad",
+        color:"color: blue",
+        imagenes: [
+        "https://images.pexels.com/photos/9932477/pexels-photo-9932477.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/9980579/pexels-photo-9980579.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/10339349/pexels-photo-10339349.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/9785151/pexels-photo-9785151.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/9764524/pexels-photo-9764524.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/10305718/pexels-photo-10305718.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/10194720/pexels-photo-10194720.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/10234899/pexels-photo-10234899.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/10152764/pexels-photo-10152764.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/10058298/pexels-photo-10058298.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250"
+    ],
+
+          likes: [0,0,0,0,0,0,0,0,0,0],
+        indice:0,
+        fuenteDeImagen: "",
+
+        numLikes:0,
+
+            }, //Fin de la data
+        mounted(){
+        this.cambiaImagen();
+            },
+        methods: {
+            cambiaColor: function()
+          {   
+                this.color="color: blue";
+                this.mensaje="Hola k ase";
+          },
+            cambiaImagen:function()
+          {
+               this.indice = Math.round(Math.random()*9);
+               this.fuenteDeImagen=this.imagenes[this.indice];
+              this.numLikes=this.likes[this.indice];
+          },
+              meGusta: function(){
+
+                  this.likes[this.indice]+=1;
+                  this.numLikes=this.likes[this.indice];
+          },            
+        }, //Fin de meétodos
+    }) // Fin del objeto Vue
+</scrip>
+</body></html>
